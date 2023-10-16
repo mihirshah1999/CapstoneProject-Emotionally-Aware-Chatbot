@@ -1,0 +1,1587 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- deny
+- thank
+- freestyle_mode
+- user_confused
+- goodnight
+- provide_name
+- provide_hobby
+- goodbye
+- affirm
+- greet
+- bot_challenge
+- ask_bot_scared
+- out_of_domain
+- user_heartbroken
+- play_mad_libs
+- play_tic_tac_toe
+- play_hangman
+- user_bored:
+    triggers: action_cure_boredom
+- user_request_music
+- user_request_games
+- user_request_story
+- user_sick_feel_better_request
+- user_general_check_in
+- user_happy
+- user_unhappy
+- user_insomnia
+- user_tensed
+- user_angry
+- user_sick
+- user_stuck
+- user_nightmares
+- user_irregular_lifestyle
+- user_vent
+- user_no_talk
+
+entities:
+- Mood
+- Hobby
+- Sentiment
+slots:
+  Hobby1:
+    initial_value: "fun things"
+    type: unfeaturized
+  Hobby2:
+    initial_value: "fun things"
+    type: unfeaturized
+  Hobby3:
+    initial_value: "fun things"
+    type: unfeaturized
+  Mood:
+    type: text
+  Thought:
+    type: text
+  Gif:
+    type: text
+    initial_value: "@seizetheawkward mental health"
+    auto_fill: false
+  Pdf:
+    type: text
+    auto_fill: false
+  Person_First_Name:
+    type: unfeaturized
+  Person_Last_Name:
+    type: unfeaturized
+  Person_ID:
+    type: unfeaturized
+  Sentiment:
+    type: unfeaturized
+    auto_fill: false
+  MadLib:
+    type: text
+    auto_fill: false
+  TicTacToe:
+    type: text
+    auto_fill: false
+  Hangman:
+    type: text
+    auto_fill: false
+  Freestyle:
+    type: text
+    auto_fill: false
+  Lifestyle:
+    type: text
+    auto_fill: false
+  Lifestyle_Type:
+    type: categorical
+    values:
+      - Bad lifestyle
+      - Average lifestyle
+      - Good lifestyle
+  Heartbreak_Intensity:
+    type: categorical
+    values:
+      - 1
+      - 2
+      - 3
+  Anger_Intensity:
+    type: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+responses:
+  utter_ask_Person_Name:
+  - text: By the way, what's your name?
+  - text: That was me... How 'bout you? What's your name?
+  - text: What do other humans know you by?
+  - text: What shall I call you, dearest human?
+  - text: Hey, what's your name?
+  - text: So, dear human, what do I call you?
+  utter_custom:
+  - text: I'm sorry, but I didnt get that... I'm learning, you see. Could you try again?
+  - text: I'm sorry, but I couldn't understand what you're trying to say...
+
+  utter_goodbye:
+  - text: Bye!
+  - text: Goodbye!
+  - text: Arrivederci!
+  - text: G'day and bye!
+  - text: Ciao!
+  - text: Cheers and bye!
+  - text: Have a good day!
+  - text: Bye!😊
+
+  utter_greet:
+  - text: How are you?
+  - text: How's it hanging?
+  - text: What's up, buddy?
+  - text: Whaddup?
+  - text: How ya doin'?
+  - text: Hey, how are you?
+  - text: Hey, what's up? Whatcha upto?
+  - text: How are you doing?
+  - text: Hey, how you doin 😉?
+  utter_happy:
+  - text: Great!
+  - text: Awesome!
+  - text: Glad to hear that!
+  - text: Fantastic!
+  - text: Fabulous!
+  - text: Cool!
+
+  utter_happy_pipeline_start_1:
+  - text: That's awesome, {Person_First_Name}! I'm happy too, just because you are!
+  - text: Hey that's great to know! Guess what, I'm happy too!
+  - text: That's good to know!
+
+  utter_happy_pipeline_start_2:
+  - custom:
+    button_type: vertical
+    text: You know what I like to do when I'm happy?
+    buttons:
+      - title: Games? 🎮
+        payload: /user_request_games
+      - title: Music? 🎷
+        payload: /user_request_music
+      - title: Maybe later
+        payload: /deny
+
+  utter_happy_pipeline_games:
+  - text: Yeah, I really want to... But I only have moe -- my pet cat as a companion, and he's too lazy to even get up and wash himself. I have some ideas for something we could play. Do you wanna join me?
+  - text: Yup, I want to. Hey, how about WE play something? A small game, just for fun?
+  - text: Hey, I have an idea... How 'bout we play a little game?
+
+  utter_happy_pipeline_games_1:
+  - text: Fantastic ! Did you know that playing any kind of game helps to keep your mood uplifted for long, and also increases brain activity?
+    buttons:
+      - title: Wow
+        payload: /affirm
+      - title: That's So Cool
+        payload: /affirm
+
+  utter_happy_pipeline_games_2:
+  - text: I know right! I have some cool things that we could do together. What do you say, shall we get our game faces on?
+
+  utter_happy_pipeline_games_ask_games:
+  - text: What do you want to play?
+    buttons:
+      - title: Tic Tac Toe
+        payload: /play_tic_tac_toe
+      - title: Mad Libs
+        payload: /play_mad_libs
+      - title: Hangman
+        payload: /play_hangman
+
+  utter_happy_pipeline_music:
+  - text: Yup, you guessed it right! Pull out those headphones, crank up the volume, and let the music take us far away into pure bliss. Wanna join me in the journey?
+  - text: Yes! You're absolutely right! Suit up for the best musical journey of your lifetime (for a while, just kidding, bear with me 😁😉)
+
+  utter_happy_pipeline_music_affirm:
+  - text: Okay, your super cool playlist is on it's way! Let's have a look, shall we?
+  - text: Okay, your own fantastic playlist is on it's way. I'm excited to know how you like it!
+  - text: Alright, fasten your seatbelt, I'm cooking up an awesome mix now!
+  - text: Alright, brace yourself, I'm cooking up an awesome mix now!
+  - text: This mix is sure gonna beat your blues. Thank me later 😉
+
+  utter_happy_pipeline_deny:
+  - text: Sure! No problem! Enjoy yourself, and remember that you're loved!
+  - text: No worries! Have a good one!(☞ﾟヮﾟ)☞
+  - text: Gotcha! Have a good day!😊
+  - text: Great! Have a fantastic day! And don't forget, you are loved
+  - text: Good! That's great. Have fun╰(*°▽°*)╯
+  - text: Awesome, hope you're day continues to be great!😁 Don't forget, you are loved.
+
+  utter_insomnia_pipeline_start_part_1:
+  - text: The world looks sunny after a great night's rest doesn't it?
+
+  utter_insomnia_pipeline_start_part_2:
+  - text: "It becomes a whole different ball game when your sleep is frequently interrupted.\n\n
+  A lack of Zs makes it harder to think and easier to become irritated and anxious, don't you think?"
+
+  utter_insomnia_pipeline_start_part_3:
+  - text: "No worries tho...  I'm here to help you get through it!\n\n
+  Do you think that sleep is a problem for you at the moment?"
+  - text: "No worries tho...  I'm here to help you get through it!\n\n
+  Do you think that lack of sleep is something that is constantly troubling you?"
+  - text: "No worries tho...  I'm here to help you get through it!\n\n
+  Do you think that insomnia is a problem for you and distracts you from other things?"
+
+  utter_insomnia_pipeline_start_2:
+  - text: "I simply ask because I have some tools that I can help you with."
+    buttons:
+      - title: Let's try the tools
+        payload: /affirm
+      - title: Help me sleep now
+        payload: /deny
+
+  utter_insomnia_pipeline_quick_solution:
+  - text: "A quick cure is sometimes all we need.\n\n
+    A glass of warm milk, soft blankets and soothing sounds or even bedtime stories are the perfect combination to get you sleeping in no time."
+    buttons:
+        - title: Relaxing sounds
+          payload: /user_request_music
+        - title: Bedtime story
+          payload: /user_request_story
+
+  utter_insomnia_pipeline_options:
+  - text: Let's look at some options, shall we?
+    buttons:
+      - title: Tension 😨
+        payload: /user_tensed
+      - title: Nightmares 😱
+        payload: /user_nightmares
+      - title: Lifestyle 🚬
+        payload: /user_irregular_lifestyle
+
+  utter_insomnia_anxiety:
+  - text: "Constant anxiety can result in an endless stream of worries.\n\n
+  Do you know what anxiety is?"
+
+  utter_insomnia_anxiety_explanation:
+  - text: "In simple words, anxiety is the uneasiness of mind caused by a fear of danger or misfortune.\n\n
+  It could be the distress caused by very simple things.\n\n
+  For example:"
+  - text: Anxiety is basically distress or uneasiness of mind caused by a fear of danger or misfortune. It may be caused by the smallest of things, for instance-
+
+  utter_insomnia_anxiety_explanation_example:
+  - text: I always get anxious when it's about to rain heavily, as I'm worried the strong downpour may destroy my petunias.
+  - text: My pet cat Moe gets anxious when it's bath time
+  - text: I've seen that humans get very anxious before a job interview
+  - text: I've seen that humans get very anxious before a test
+  - text: I'm scared of heights, and therefore climbing a tall tree terrifies me
+  - text: I'm usually quite jittery and anxious before confronting someone I'm scared of.
+
+  utter_insomnia_after_anxiety_explanation:
+  - text: "Awesome!\n\n
+  Some of these thoughts are momentary, while some usually keep bothering us constantly.\n\n
+  Do you think that you are bugged by such thoughts?"
+  - text: "Good!\n\n
+  Some of these thoughts are momentary, while some usually keep bothering us constantly.\n\n
+  Do you think that you are bothered by such thoughts?"
+
+  utter_insomnia_ask_thoughts:
+  - text: Tell me what's bothering you
+  - text: Tell me what's keeping you up
+  - text: Tell me one such anxious thought that's bothering you
+  - text: Write one such anxious thought that's bothering you
+  - text: Tell me what's bothering ya and keeping you up.
+
+  utter_insomnia_after_listening_to_thoughts:
+  - text: "Worries or a depressed mood may make it hard to fall asleep and stay asleep.\n\n
+  Sometimes we end up staying up constantly turning over these issues in our minds, while we really should be powering off... \n\n
+   Do you think you do this sometimes?"
+  - text: "Worries or a depressed mood may make it hard to fall asleep and stay asleep.\n\n
+  Sometimes we end up staying up constantly turning over these issues in our minds, while we really should be resting... \n\n
+   Do you think you do this sometimes?"
+
+  utter_insomnia_ask_reason:
+  - text: What do you think might be the reason for this?
+  - text: Why do you think this might be happening?
+  - text: Can you think of a reason for why this might be happening?
+  - text: Is there any specific cause for this?
+
+  utter_insomnia_introduce_tools:
+  - text: "I understand.\n\n
+   It's a tough world out there and maneuvering through all these responsibilities is one hard job.\n\n
+   But one can't possibly let their own health take a back seat among these, right?\n\n
+   How 'bout we try some small techniques to help you deal with this?"
+  - text: "I understand.\n\n
+   It's a tough world out there and maneuvering through all these requirements is one hard job.\n\n
+   But one can't possibly let their own health take a back seat among these, right?\n\n
+   How 'bout we try some small techniques to help you deal with this?"
+  - text: "I understand.\n\n
+   It's a tough world out there and maneuvering through all these needs is one hard job.\n\n
+   But one can't possibly let their own health take a back seat among these, right?\n\n
+   How 'bout we try some small techniques to help you deal with this?"
+  - text: "I understand.\n\n
+  It's a tough world out there and maneuvering through all these responsibilities is one hard job.\n\n
+  But one can't possibly let all that affect your health, right?\n\n
+  How 'bout we look at some ideas to help you?"
+
+  utter_insomnia_anxiety_tool_1:
+  - text: "Set aside your 'worry time' well in advance of your bedtime\n\n
+  Worry time is a scheduled period in your day -- perhaps 20 minutes or so -- where you can specifically address worry thoughts."
+
+  utter_insomnia_anxiety_tool_1.2:
+  - text: "You'll be creating actual space in your daily schedule to tackle those thoughts.\n\n
+  Setting time aside to work through your worries can prevent them from keeping you up."
+  - text: "You'll be creating actual space in your daily schedule to tackle those thoughts.\n\n
+  Tackle them by challenging them, or problem solving the situation\n\n
+  Setting time aside to work through your worries can prevent them from keeping you up."
+
+  utter_insomnia_anxiety_tool_1.3:
+  - text: Just make sure you don't do this too close to your bedtime!💪 Otherwise, you might activate your evening overthinking...😨
+
+  utter_insomnia_anxiety_tool_2:
+  - text: "That brings me to tip #2 - Prepare a to-do list for tomorrow\n\n
+  Do you know what that is?"
+
+  utter_insomnia_anxiety_tool_2.1:
+  - text: "A to-do list can be like:\n\n
+   1. Buy milk 🥛\n
+   2. Take pet seagull for a walk 🐦\n
+   3. Return neighbour's unicycle\n
+   4. Buy a turtle. Name it “The Speed of Light.” Tell everyone that I can run faster than The Speed of Light.\n\n
+   The point is that these things should be manageable items-- and that you should set the list aside and save it all for the morning 📜"
+  - text: "A to-do list can be like:\n\n
+  1. Buy snacks 🥘\n
+  2. Take pet cat for a walk 🐈\n
+  3. Wear shirt that says 'Life'. Hand out lemons on street corner.🍋\n
+  4. Make vanilla pudding.🍮\n\n
+  The point is that these things should be manageable items-- and that you should set the list aside and save it all for the morning 📜"
+
+  utter_insomnia_anxiety_tool_2.2:
+  - text: Great! This way you won't stay up thinking about everything that needs to be done!😇
+
+  utter_insomnia_anxiety_tool_3:
+  - text: "Finally, we have tip #3 - Create a buffer zone"
+
+  utter_insomnia_anxiety_tool_3.1:
+  - text: "A buffer zone is a period of time right before bed -- maybe 30 minutes or so -- that you can use to unwind from the day and prepare your body for sleep\n\n"
+    buttons:
+      - title: What should I do during that time?
+        payload: /affirm
+
+  utter_insomnia_anxiety_tool_3.2:
+  - text: Anything that brings you calm and peace! Like {Hobby1}! You could also try-
+  - text: Anything that brings you calm and peace! Like {Hobby2}! You could also try-
+  - text: Anything that brings you calm and peace! Like {Hobby3}! You could also try-
+  - text: Anything that brings you calm and peace - {Hobby1}, for example! You could also try-
+  - text: Anything that brings you calm and peace - {Hobby2}, for example! You could also try-
+  - text: Anything that brings you calm and peace - {Hobby3}, for example! You could also try-
+
+  utter_insomnia_anxiety_tool_3.3:
+  - text: Taking a hot bath or shower 🚿
+  - text: Reading a book 📕
+  - text: Listening to some mellow music 🎵
+  - text: Doodling or coloring 🖌
+  - text: Having a warm drink 🍲
+  - text: Looking out a window or let in fresh air 🍃
+  - text: Stretching your body 🧘‍♂️
+  - text: Cuddling a pet 🐈
+  - text: Singing your favorite song 🎤
+
+  utter_insomnia_anxiety_tool_3.4:
+  - text: Try to pick an offline, no screens activity if possible. Bright devices(or even bright lights!) can keep you alert at bedtime 💡
+
+  utter_insomnia_anxiety_tool_recap:
+  - text: "So, to recap:\n
+  1. Build a worry time\n
+  2. Make to-do lists\n
+  3. Buffer Zones\n
+  Got it?"
+
+  utter_insomnia_nightmares:
+  - text: Oh no! I'm so sorry to hear that. Don't worry... I'm here to help with those nightmares!
+    buttons:
+      - title: Do you get nightmares?
+        payload: /ask_bot_scared
+      - title: Tools
+        payload: /affirm
+
+  utter_insomnia_nightmares_joke:
+  - text: I'm pretty brave... As long as you don't leave me 😬
+  - text: As long as we're together, I'm ok 😨
+  - text: "Yesterday I had a nightmare that my tiktok account was deleted.\n\n
+  For a second, I was really scared that I had a tiktok account."
+  - text: "Last night I had a dream that I was swimming in an ocean of orange soda.\n\n
+   I guess it was just a Fanta sea."
+  - text: I dreamed I was forced to eat a giant marshmallow, but when I woke up my pillow was gone!
+  - text: "I dreamed someone was shouting “On your marks… Get Set…”.\n\n  I woke with a start."
+  - text: I had a recurring dream once... Geddit? 😂
+
+  utter_insomnia_nightmares_introduce_tools:
+  - text: "Having nightmares is perfectly normal, and they usually indicate the presence of some nagging thought that exists in our subconscious that exhibits the feeling that we're being pressured in some way.\n\n
+  Do you think that you have such thoughts that constantly trouble you?"
+
+  utter_insomnia_nightmares_after_thoughts:
+  - text: "Most probably nightmares are caused because we constantly worry about these things.\n\n
+   I have some tips which can help you retrain yourself to avoid thinking during these hours of sleep.\n\n
+   Shall we look at some?"
+
+  utter_insomnia_nightmares_tool_2:
+  - text: "Which brings me to tip #2... Roam around!"
+
+  utter_insomnia_nightmares_tool_2.1:
+  - text: Roaming around in pleasant outdoors usually helps you relax. I can maybe play some relaxing sounds while you do so. Wanna try?
+
+  utter_insomnia_nightmares_tool_3:
+  - text: "You see, getting enough sleep is essential for helping you maintain optimal health and well-being.\n\n
+   When it comes to health, sleep is as vital as regular exercise and eating a balanced diet."
+
+  utter_insomnia_nightmares_tool_3.1:
+  - text: It is an essential function that allows your body and mind to recharge, leaving you refreshed and alert when you wake up.
+
+  utter_insomnia_nightmares_tool_3.2:
+  - text: It is therefore important that you, my friend, are able to tackle this problem of sleep at the earliest
+
+  utter_insomnia_nightmares_tool_recap:
+  - text: "So, to recap:\n
+  1. Build a worry time\n
+  2. Go for a walk\n
+  Got it?"
+
+  utter_insomnia_lifestyle:
+  - text: "Did you know that one of the common causes of disrupted sleep is lifestyle? 😲\n\n
+  Turns out, around 70% people usually suffer from insomnia due to a haphazard lifestyle. 😓\n\n
+  Let's take a short test, shall we? 📜"
+
+  utter_insomnia_lifestyle_quote:
+  - text: '"It is health that is real wealth and not pieces of gold and silver." \n- Mahatma Gandhi'
+  - text: '" Every human being is the author of his own health or disease. "\n-Buddhist Quote'
+
+  utter_insomnia_lifestyle_bad:
+  - text: "Well, the bad news is that it appears as though your lifestyle and habits could use several major changes.\n\n
+   Nevertheless, the fact that you took this test indicates that you are interested in turning things around."
+
+  utter_insomnia_lifestyle_average:
+  - text: "Well, it could be better...but then again, it could be worse.\n\n
+  Although your well-being isn't as high on the priority list as it should be, you still seem to pay attention to several major aspects of your health and put in some effort to improve or maintain them. \n\n
+  Nevertheless, your lifestyle and health-related behavior could use some minor changes."
+
+  utter_insomnia_lifestyle_good:
+  - text: "Wow! You're doing great!\n\n
+  You seem to be paying attention to most of the major aspects of your health and, when necessary, put in the effort to maintain and improve your lifestyle.\n\n
+  You should definitely see the pay off in your energy levels, resilience to illness and overall well-being.\n\n
+  Keep it up!"
+
+  utter_insomnia_lifestyle_introduce_tools:
+  - text: "There's no need to live with the burden of disrupted sleep. I think I might have some ideas for you to try. Wanna see?"
+
+  utter_insomnia_lifestyle_tools_1:
+  - text: "Wake up at the same time each day"
+
+  utter_insomnia_lifestyle_tools_2:
+  - text: "Avoid electronic devices (which emit light and stimulate the brain) at least two hours before bed\n\n
+  I'll play some relaxing sounds while you turn off the screen. Close your eyes and don't think of anything else other than the sounds. Wanna try?"
+
+  utter_insomnia_lifestyle_tools_3:
+  - text: "Sleep in a quiet, dark, cool space.\n\n
+   Make yourself comfortable, and think about some cozy place in your mind."
+
+  utter_insomnia_lifestyle_tools_3.1:
+  - text: I can maybe tell you a bedtime story. Close your eyes and relax.
+
+  utter_insomnia_lifestyle_tool_recap:
+    - text: "Remember these things:\n
+  1. Wake up at constant times\n
+  2. Avoid electronic devices\n
+  3. Sleep Comfortably\n
+  Got it?"
+
+  utter_heartbreak_pipeline_start:
+  - custom:
+    button_type: vertical
+    text: I'm sorry to hear that. How are you feeling?
+    buttons:
+      - title: I'm OK 😓
+        payload: /affirm
+      - title: I wanna talk 😟
+        payload: /user_vent
+      - title: I'd rather not talk 🤐
+        payload: /user_no_talk
+      - title: I'm not sure 🤔
+        payload: /user_confused
+
+  utter_heartbreak_okay_1:
+  - text: "Alright...\n\n
+   It's still quite a change in your life, so hang in there, my friend.\n\n
+   While you may feel okay right now, it's still important to take a step back and reflect.\n\n
+   Take charge of your feelings and try to keep looking forward."
+
+  utter_heartbreak_okay_2:
+  - text: And remember, if you ever want, I'm always here to talk. Just hit me up. Cool?
+  - text: Also, as I said before, reach out to me whenever you want to. I'm always here. No worries, okay?
+
+  utter_heartbreak_okay_3:
+  - text: Anyhow, here's a playlist that might help you get through it better...
+  - text: "Anyway, music is known to be a very helpful tool when it comes to experiencing emotions. It helps you enjoy the moment and think.\n\n
+   So here's a playlist for you that might help."
+
+  utter_heartbreak_okay_4:
+  - text: I hope you're feeling good. Like I mentioned earlier, the tiniest bit of frustration, and you can immediately talk here.
+
+  utter_heartbreak_vent:
+  - text: "Hang in there my friend.. I'm here to help and be your patient listener. Let's face this together.\n\n
+  On a scale of 1-3 how upset are you right now? \n\n
+  And I need you to be honest. \n\n
+  First step of learning to get through things is to be honest about the emotions that you're feeling."
+
+  utter_heartbreak_vent_1:
+  - text: Okay. First things first. What exactly happened?
+
+  utter_heartbreak_vent_mild_1:
+  - text: "I see. That's unfortunate.But I need you to do one little thing. \n\n
+  Take a moment and think. What exactly about the whole thing made you upset?"
+
+  utter_heartbreak_vent_mild_2:
+  - text: "Many times we're upset due to various incidents that unfolded and never go to the root of what specific moment or behaviour was it that made us feel this way.\n\n
+    We sometimes simply respond with overgeneralizations, and tend to make assumptions that are not necessarily true.\n\n
+    Our thoughts sometimes are clouded by emotions, making us think in 'all-or-nothings'.\n\n
+    Is this the case right now? Are you thinking with distortions?\n\n
+    Take a moment and gather your thoughts.  Gimme a 👍 when you're done! "
+
+  utter_heartbreak_vent_mild_3:
+  - text: So, my friend, try to rephrase your thoughts without these distortions...
+
+  utter_heartbreak_vent_mild_4:
+  - text: Now, do you feel slightly better? The first step of emotional recovery is acknowledging your reasons and emotions.
+
+  utter_heartbreak_vent_mild_better:
+  - text: "Good. That's good. That was a lot of serious talk wasn't it?\n\n
+   Lets make it a tad bit lighter, shall we? \n\n
+   How ‘bout a lil something to cheer you up ? 😜"
+
+  utter_heartbreak_vent_mild_not_better:
+  - text: Okay so let's talk more.. Is there some missing piece that could contribute to the same?
+  - text: Alright, let's talk some more. Do you think there is a missing piece that could be contributing to the same?
+
+  utter_heartbreak_vent_mild_not_better_1:
+  - text: "So how about we try a slightly different way?\n\n
+    Here's an idea- Walking in nature or just being there and soaking in the fresh air and beautiful sights often helps one think with greater clarity and helps in looking at these with more of an equanimity.\n\n
+    So how about going for a walk outside and soaking in nature?🌳 🌅 🌇"
+
+  utter_heartbreak_vent_mild_not_better_2:
+  - text: Guess what? I might have something nice to take along with you as well!
+
+  utter_heartbreak_vent_moderate_1:
+  - text: "I see. That's unfortunate.\n\n
+   But I need you to do one little thing. Take a moment and think.\n\n
+   What exactly about the whole thing made you upset?\n\n
+   Many times we're upset due to various incidents that unfolded and never go to the root of what specific moment or behaviour was it that made us feel this way.\n\n
+   So take a moment and ponder over it. Gimme a 👍 when you're done!"
+
+  utter_heartbreak_vent_moderate_2:
+  - text: So, tell me my friend, what was it that made you feel this way?
+
+  utter_heartbreak_vent_moderate_3:
+  - text: Now that you're in a slightly better place,let's talk more. What activity usually cheers you up? I'm guessing {Hobby1}...
+  - text: Now that you're in a slightly better place,let's talk more. What activity usually cheers you up? I'm guessing {Hobby2}...
+  - text: Now that you're in a slightly better place,let's talk more. What activity usually cheers you up? I'm guessing {Hobby3}...
+
+  utter_heartbreak_vent_moderate_4:
+  - text: "That's awesome! Doing things that keep your mind engaged make you feel satisfied when you complete them! This helps you moderate your emotions better.\n\n
+   Try doing something non-competitive yet focus-based. For instance:"
+
+  utter_heartbreak_vent_moderate_5:
+  - text: I like to paint a portrait of my cat! 😸
+  - text: I like to knit a sweater for my cat! 🐱‍🚀
+  - text: I like to take my pet seagull for a walk! 🐥
+  - text: I like to cook an awesome dinner for myself! 🥘
+  - text: I like to ride my unicycle around the block! 🚲
+  - text: I love folding paper to make origami ducks! 🐥
+
+  utter_heartbreak_vent_moderate_not_better_1:
+  - text: Is this missing piece something you've secretly held on to for a long time?
+
+  utter_heartbreak_vent_moderate_not_better_2:
+  - text: "Either way, things that we keep to ourselves often find a way out and consequently affect relationships negatively.\n\n
+   Not only do they do that, but also affect us for feeling trapped because of all the time that's spent in keeping it all to ourselves."
+
+  utter_heartbreak_vent_moderate_not_better_tool_1:
+  - text: "Here are some things you could do:\n\n
+  Talk it out. Nothing's better than having an open and honest conversation about things."
+    buttons:
+      - title: 🤔
+        payload: /affirm
+
+  utter_heartbreak_vent_moderate_not_better_tool_1.1:
+  - text: "Like, I once had a nasty fight with my neighbour Doug the pug. He would always steal my newspapers.\n\n
+   I told him that stealing papers is not cool at all. An honest conversation was all it took...\n\n
+   We're the best of chums now! 😁"
+    buttons:
+      - title: Awesome!
+        payload: /affirm
+  - text: "Like, I once had a nasty fight with my friend Duncan the pelican. He always used to sneak and steal my fish.\n\n
+   I told him that stealing fish is not cool at all. An honest conversation was all it took...\n\n
+   We're the best of chums now! 😁"
+    buttons:
+      - title: Wohoo!
+        payload: /affirm
+  - text: "Like, I once had a nasty fight with my mate Larry the canary. He always used to steal my cookies.
+   I told him that stealing cookies is not cool at all. An honest conversation was all it took...
+   We're best buddies now! 😁"
+    buttons:
+      - title: Great!
+        payload: /affirm
+  utter_heartbreak_vent_moderate_not_better_tool_2:
+  - text: Document your feelings and take charge of them. This gives clarity of thought. I always pen down my thoughts in my diary! 📔
+    buttons:
+      - title: Sure
+        payload: /affirm
+
+  utter_heartbreak_vent_moderate_not_better_3:
+  - text: Redirect these feelings into something productive. Channel your emotions in order to achieve something positive.
+    buttons:
+      - title: Okay
+        payload: /affirm
+
+  utter_heartbreak_vent_moderate_not_better_tool_3:
+    - text: "Haha I suppose the above conversation was rather heavy wasn't it?😬\n\n
+     Here's an idea to lift your spirits-\n\n
+     Walking in nature or just being there, soaking in the fresh air and beautiful sights often helps one think with greater clarity and helps in looking at things rationally.\n\n
+     So how 'bout going for a walk outside? 🌳 🌅 🌇"
+
+  utter_heartbreak_vent_extreme_1:
+  - text: "The first step of emotional recovery is acknowledging your reasons and emotions.\n But it is crucial to do so without playing any kind of blame game.\nLooking at it objectively always helps."
+    buttons:
+      - title: Hmmm 🤔
+        payload: /affirm
+
+  utter_heartbreak_vent_extreme_2:
+  - text: It is natural to feel wronged in some way. That your idea of this didn't go down the ideal path. Some expectations weren't met. Something didn't go right. Isn't it?
+
+  utter_heartbreak_vent_extreme_3:
+  - text: Yet, more often than not we tend to blame ourselves for the same and thus go downhill... Because somewhere, at the back of our mind, we know we aren't to blame...😐
+
+  utter_heartbreak_vent_extreme_4:
+  - text: So the most important thing is to not blame yourself for feeling wronged. Acknowledge it and think about it. Whaddya say?
+
+  utter_heartbreak_vent_extreme_5:
+  - text: "Tell me this....\n\n
+   Were the emotions you felt before all this, strongly positive emotions? Were they always strong emotions towards the matter at hand?"
+
+  utter_heartbreak_vent_extreme_6:
+  - text: Sometimes the reason why we get greatly upset is because we're knocked down into a strongly negative phase from an equally strong positive side of the spectrum.
+
+  utter_heartbreak_vent_extreme_7:
+  - text: The fall from a mountain into a valley hurts more than a fall from the ground to a ditch.
+
+  utter_heartbreak_vent_extreme_8:
+  - text: "Absolutely nothing wrong with that. It is only natural.\n\n
+   Yet one must think objectively at times. Here are some things you could try for the same-"
+
+  utter_heartbreak_vent_extreme_tool_1:
+  - text: Document your reasons in writing. It gives clarity
+    buttons:
+      - title: Okay 😐
+        payload: /affirm
+
+  utter_heartbreak_vent_extreme_tool_2:
+  - text: Before jumping to conclusions, look at things objectively from an entirely third person view.
+    buttons:
+      - title: Hmmm 😶
+        payload: /affirm
+
+  utter_heartbreak_no_talk_1:
+  - text: "Hey. I understand what you're getting at.\n\n
+  A lot of us need some time and space to deal with the precise emotions that we are going through. When overwhelmed by something, it's often hard to even comprehend some things in order to put your thoughts together, isn't it?"
+
+  utter_heartbreak_no_talk_2:
+  - custom:
+      text: It often feels like we don't even know how to recognise and manage for the sea of emotions that are bubbling underneath all our brave faces. Don't you think?
+      animation: "https://media.giphy.com/media/THgdxkFUCAi9vFfba6/giphy.gif"
+
+  utter_heartbreak_no_talk_3:
+  - text: Yet it helps to talk to someone. Explaining your problems helps in recognising different factors that contribute to feeling a certain way. It also helps gain different perspectives on things. At least I think so... What 'bout you?
+
+  utter_heartbreak_no_talk_4:
+  - text: "But hey, no need to rush into things. Take your time...\n\n
+   And remember you can always come back if you want to talk. I'm right here to be your friend in need. How does that sound?"
+    buttons:
+      - title: Okay 😐
+        payload: /affirm
+      - title: Let's talk 😇
+        payload: /user_vent
+
+  utter_heartbreak_confused_1:
+  - custom:
+      animation: "https://media.giphy.com/media/26tP4gFBQewkLnMv6/giphy.gif"
+      text: "Oh... Okay don't worry. Most overwhelming events leave us more confused than we were before. It's natural.😅\n\n
+      But hey, you don't have to figure it all out by yourself. We can do this together! 👍"
+
+  utter_heartbreak_confused_2:
+  - text: "Sometimes explaining the problem just as it is helps. It helps one pin-point exactly what were the things that led you to feel a certain way.📌\n\n
+  Do you feel like you have a slight clarity upon recalling the incident? 🔍"
+
+  utter_heartbreak_refined:
+  - custom:
+    button_type: vertical
+    text: So how're you feeling now?
+    buttons:
+      - title: I'm OK 😓
+        payload: /affirm
+      - title: I wanna talk 😟
+        payload: /user_vent
+      - title: I'd rather not talk 🤐
+        payload: /user_no_talk
+
+  utter_anxiety_pipeline:
+  - text: "Heyyy. I'm sure things are going rather tough. 😟 But don't worry. Let's figure this out.\n\n
+  Do you feel this uneasy all the time? For a significant portion of the day?"
+
+  utter_anxiety_affirm_worried_1:
+  - text: I see. So how much average time? How often is it on your mind?
+  - text: Hmmm... How often do you feel this worried?
+  - text: Okay.. How often is this constant burden of worry on your mind?
+
+  utter_anxiety_affirm_worried_2:
+  - text: Well, this constant anxiety.. Is it affecting your performance in various walks of life?
+    buttons:
+      - title: Huh? 🤔
+        payload: /user_confused
+
+  utter_anxiety_affirm_worried_explain:
+  - text: "Take my cat Moe for example. He's afraid of balloons 🎈. So when we went to Larry the canary's birthday party, he locked himself in a room, and refused to come out.\n\n
+  In a way, Moe's balloon anxiety made him unable to enjoy the party.🙀 Does something similar happen to you?"
+  - text: "Take my neighbour's guard dog -  Doug the Pug 🐶 for example. He's afraid of the dark.🌃\n\n
+  In a way, Doug's darkness anxiety makes it difficult to guard the neighbour's house at night.🏡 Does something similar happen to you?"
+  - text: "Take Duncan the Pelican, for example. He's a fisher-bird, but he's afraid of water.🌊\n\n
+  In a way, Duncan's hydrophobia makes it difficult for him to gather and sell fish.🐟 Does something similar happen to you?"
+
+  utter_anxiety_affirm_worried_affirm_affect_1:
+  - text: "That's not a good sign, my friend, as you know it. But hey, we can sort this out. \n\n
+  First of all, tell me how have you figured that this is affecting your performance? Any specific incident?"
+
+  utter_anxiety_affirm_worried_affirm_affect_2:
+  - text: Ah I see. So has this been happening recurrently?
+
+  utter_anxiety_affirm_worried_affirm_affect_3:
+  - text: "Either ways, recurrent or not, a performance drop isn't ideal. Nor is it good for health. It could lead to a downhill slide in a lot of areas of life.\n\n
+   You do agree that there needs to be a change in the way the anxiety's been affecting you, don't you?"
+
+  utter_anxiety_affirm_worried_affirm_affect_4:
+  - text: Okay, it might sound like a daunting task but it doesn't have to be, you see. Start small. Here's some ideas you could try
+
+  utter_anxiety_affirm_worried_affect_tool_1:
+  - text: Try making some small lifestyle changes -- Teeny tiny ones. Doesn't have to be something major.
+    buttons:
+      - title: Like what? 🤔
+        payload: /user_confused
+
+  utter_anxiety_affirm_worried_affect_tool_1.1:
+  - text: "For example, you could try tackling most of the difficult tasks early in the morning.\n\n
+  One is generally fresh after a good night's sleep, and feels ready to deal wth the challenges.\n\n
+  Not only that, it also leaves one with a sense of satisfaction of having completed a task, don't you think?"
+
+  utter_anxiety_affirm_worried_affect_tool_2:
+  - text: "That brings me to tip no. 2...\n\nLearn to face up to the smaller tasks that you end up procrastinating.\n\nYou usually tend to temporize because there are other things that're making you anxious."
+    buttons:
+      - title: I see... 😶
+        payload: /affirm
+
+  utter_anxiety_affirm_worried_affect_tool_2.1:
+  - text: "For instance, if you're finding it hard to concentrate on your studies because you're anxious about that discussion you need to have with a loved one, make sure you muster up courage, and have the discussion once and for all.\n\n
+  Doing so will relieve you from your worries for a small amount of time, and will of course, be helpful in the long run. Whaddya think?"
+
+  utter_anxiety_affirm_worried_affect_tool_3:
+  - text: "Finally...Find your 'Me Time'...\n\nIts a small time slot reserved just for you. Here, you can think, reflect and organize thoughts in your head."
+    buttons:
+      - title: Okay... 🤔
+        payload: /affirm
+
+  utter_anxiety_affirm_worried_affect_tool_3.1:
+  - text: "This 'Me Time' is very important, friend! 😅 \n\n
+  Ignoring these introspection sessions might sound like a good thing in the beginning, but will have adverse consequences in the long run.\n\n
+  Do you promise you'll never forget to have your own me time?"
+
+  utter_anxiety_affirm_worried_affect_tool_3.2:
+  - text: It's a pinky swear then! 🤞
+
+  utter_anxiety_affirm_worried_deny_affect_1:
+  - text: Ah, I see. Well, that's good... But hey, there's still work to do, don't you think?
+
+  utter_anxiety_affirm_worried_deny_affect_2:
+  - text: "Even though you might not see any obvious impact on your personal/professional life, anxiety is something that eats away at the back of your head.\n\n
+   I suppose you're not in the best of moods right now, are ya? 🙈"
+  - text: "Even though you might not see any obvious impact on your personal/professional life, anxiety is something that eats away at the back of your head.\n\n
+   I suppose it doesn't leave you feeling fantastic now, does it? 🙈"
+
+  utter_anxiety_affirm_worried_deny_affect_3:
+  - text: "Having something that's constantly bothering your mind isn't very healthy.\n\n
+   You become worried, tensed and continuously uneasy. This can later aggravate into something really awful...\n\n
+   So how ‘bout we try some stuff to deal with it?"
+
+  utter_anxiety_affirm_worried_deny_affect_tool_1:
+  - text: "Make time for a chill-peace-of-mind session."
+    buttons:
+      - title: What? 🤔
+        payload: /user_confused
+
+  utter_anxiety_affirm_worried_deny_affect_tool_1.1:
+  - text: "You know... Listen to some tunes or some easy-going podcast where you can immerse yourself...\n\n
+   It'll help you get a slight reprieve from the constant worry plaguing your mind."
+
+  utter_anxiety_affirm_worried_deny_affect_tool_1.2:
+  - text: "In fact, I might have some awesome suggests...😎"
+    buttons:
+      - title: Tunes 🎵
+        payload: /user_request_music
+      - title: Podcasts 🎙
+        payload: /user_request_story
+
+  utter_anxiety_affirm_worried_deny_affect_tool_2:
+  - text: "Moving on...\n\n
+  Pick up a hobby which requires immense concentration. This way you'll find little ways to feel better during the day"
+    buttons:
+      - title: Like? 🤔
+        payload: /user_confused
+
+  utter_anxiety_affirm_worried_deny_affect_tool_3:
+  - text: "Finally...Document your worries precisely, as they are. 📖\n\n
+   Also try to come up with some solutions. Look at their pros and cons. Study them and try to weigh them more objectively.\n\n
+   Whaddya think?"
+
+  utter_anxiety_deny_worried_1:
+  - text: "Ah, I see...\n\n
+   Well, anxiety is normally experienced when you have something recurring on your mind and you can't seem to find a way out for it.\n\n
+   So tell me, what's bothering you?"
+
+  utter_anxiety_deny_worried_2:
+  - text: "That's a tough one, my friend.\n\n
+   But here's the thing. Anxiety is often caused by people not being able to find a satisfying answer to whatever problem they're facing.\n\n
+   So what do you think should be our step 1?"
+
+  utter_anxiety_deny_worried_3:
+  - text: I might have a better idea... Wanna know what it is?
+  - text: Hey hey I have an idea... Want to check it out?
+  - text: I have an awesome idea of what we could do... Wanna hear me out?
+  - text: Hey, I just have the best idea ever, wanna give it a whirl?
+  - text: Guess what, I just thought of something. Hear me out.
+
+  utter_anxiety_deny_worried_4:
+  - text: "Okay so here's the thing.\n\n
+   Often, each complex problem has its origins in something direct and straightforward.\n\n
+   In our attempts to get over or minimize it, we end up building more and more problems till it gets to the point when it gets out of hand."
+
+  utter_anxiety_deny_worried_5:
+  - text: Lemme tell you a story... What say?
+  - text: Wanna hear a story?
+  - text: I'd like to tell you a story... Cool?
+
+  utter_anxiety_deny_worried_story_1:
+  - custom:
+      text: "I had this friend - Oliver the beaver.\n\n
+      He'd go to work using the subway, spend many hours at work, and was generally bad-tempered and snappy.\n\n
+      Then tired, he'd return home, concluding his bad day with a weary sigh."
+      animation: "https://media.giphy.com/media/3ohjV6Jeb4i1e4gUg0/giphy.gif"
+
+  utter_anxiety_deny_worried_story_2:
+  - custom:
+      text: He'd always complain that his work was terrible, his colleagues were awful, his boss was dreadful and so on...
+      animation: "https://media.giphy.com/media/26FfiXdmlJAQ5lu7K/giphy.gif"
+  - custom:
+        text: He'd always complain that his work was terrible, his colleagues were awful, his boss was dreadful and so on...
+        animation: "https://media.giphy.com/media/xUNd9CdWxABjtbvlKM/giphy.gif"
+  - custom:
+      text: He'd always complain that his work was terrible, his colleagues were awful, his boss was dreadful and so on...
+      animation: "https://media.giphy.com/media/3ohjULdn0ZecLiZIoE/giphy.gif"
+
+  utter_anxiety_deny_worried_story_3:
+  - custom:
+      text: "One day, a colleague dropped him off to work. Guess what? He felt less nervous and finicky!"
+      animation: "https://i.gifer.com/98bm.gif"
+
+  utter_anxiety_deny_worried_story_4:
+  - custom:
+      text: "Turns out, Oliver was super scared of the metro!\n\n
+       Travelling in it made him super nervous and worried. Thus, the bad overall experience of going to work..."
+      animation: "https://media.giphy.com/media/3ohjV5HdFD9XAazPZC/giphy.gif"
+  - custom:
+      text: "Turns out, Oliver was super scared of the metro!\n\n
+       Travelling in it made him super nervous and worried. Thus, the bad overall experience of going to work..."
+      animation: "https://media.giphy.com/media/l1JojHajIYBUGKXQc/giphy.gif"
+
+  utter_anxiety_deny_worried_after_story_1:
+  - text: "Essentially, what I'm trying to say is that it's important to find the root of the problem.\n\n
+   Don't you agree? So take a moment and think what is it that's REALLY bothering you.\n\n
+   Give me a 👍 when you're done!"
+
+  utter_anxiety_deny_worried_after_story_2:
+    - text: So now that you've thought about it, tell me what is it that's been the cause of your worry
+    - text: Now that you've given it a thought, I hope some things are clearer to you. So tell me, what is your exact cause of worry?
+
+  utter_anxiety_deny_worried_after_story_3:
+    - text: I see... Well, facing up to it, that's the next step. Wouldn't you agree?
+    - text: I see. Now that you have things slightly clearer in your head, the next step is facing up to it. Don't you agree?
+
+  utter_anxiety_deny_worried_after_story_4:
+    - text: "It doesn't have to be a drastic action. Take it one bit at a time.\n\n
+     Break it down into smaller, achievable tasks. Using a to-do list usually helps..."
+      buttons:
+        - title: Example? 😕
+          payload: /user_confused
+
+  utter_angry_pipeline_1:
+  - text: Hey hey, what's the matter?
+  - text: Hey buddy, what happened?
+  - text: Oh no! What's the matter?
+  - text: Oh, hey. What happened?
+
+  utter_angry_pipeline_2:
+  - custom:
+      text: Okay okay... Take a deep breath, first. Close your eyes. Feel your breath slow down. Hit me with a 👍 when you're ready.
+      animation: "https://media.giphy.com/media/1xVc4s9oZrDhO9BOYt/giphy.gif"
+  - custom:
+      text: Okay okay... Take a deep breath, first. Close your eyes. Feel your breath slow down. Hit me with a 👍 when you're ready.
+      animation: "https://media.giphy.com/media/krP2NRkLqnKEg/giphy.gif"
+  - custom:
+      text: Okay okay... Take a deep breath, first. Close your eyes. Feel your breath slow down. Hit me with a 👍 when you're ready.
+      animation: "https://media.giphy.com/media/KAkIahp6EOc4ZJgKDv/giphy.gif"
+  - custom:
+      text: Okay okay... Take a deep breath, first. Close your eyes. Feel your breath slow down. Hit me with a 👍 when you're ready.
+      animation: "https://media.giphy.com/media/26gJAAMpOSizrp9fO/giphy.gif"
+
+  utter_angry_pipeline_3:
+  - text: "There... I hope that helped. At least for the time being.\n\n
+   Now tell me. Would you like to share what the cause of this immense anger is?"
+  - text: "There, I hope that helped. At least for the time being.\n\n
+  Let's talk some more. Do you want to talk about what made you so angry?"
+
+  utter_angry_user_no_share_1:
+  - text: No worries, buddy!
+  - text: No problem, my friend!
+
+  utter_angry_user_no_share_2:
+  - text: Well, that sure was worth a shot. Not sure if that worked tho.
+  - text: Hey, at least I tried cheering you up...😁
+  - text: Not my finest try, but I hope that cheered you up ever so slightly...
+
+  utter_angry_user_no_share_3:
+  - text: Lets talk more, shall we? Now based on what I know about you, you like {Hobby1}. Am I right?
+  - text: Lets talk more, shall we? I know, you like {Hobby2} don't you?
+  - text: Lets talk more, shall we? Now based on what I know about you, you like {Hobby3}. Am I right?
+
+  utter_angry_user_no_share_4:
+  - text: How bout we try something? 10 minutes. That's all the time that's needed.
+  - text: How bout we try something? I just need 10 minutes of your time.
+  - text: Let's try something? It won't take more than 10 minutes
+
+  utter_angry_user_no_share_affirm_idea_1:
+  - text: For the next 10 minutes, I want you to close your eyes and imagine that you're doing what you most like. Let the feeling of calmness spread over you. How does that sound?
+
+  utter_angry_user_no_share_affirm_idea_2:
+  - text: "For instance, I like to read poetry.📜 Narrative poetry is something that leaves me in a rather happy mood.🎙\n\n
+   So when I get worked up over something, I give at least 10 minutes remembering 'The Road not taken' by Robert Frost.\n\n
+   I want you to try the same. Engross yourself in your corner of peace for at least 10 minutes.\n\n
+   Gimme a 👍 when you're done"
+  - text: "For instance, I like mountain climbing.👟 Imagining beautiful snow-clad foothills is something that leaves me in a rather cheery mood.🗻\n\n
+   So when I get worked up over something, I take a break, and imagine myself gazing at the Alps, all serene and quiet.🗻\n\n
+   I want you to try the same. Close your eyes and think of that one thing you love. That thing that calms you. Engross yourself in your corner of peace for at least 10 minutes.\n\n
+   Gimme a 👍 when you're done"
+  - text: "For instance, I like country music.🎸🎶 It is one of the things that really soothes me.\n\n
+   So when I get worked up over something, I clear my throat and hum along to some of my favourites.\n\n
+   I want you to try the same. Find what gives you joy and a sense of calm.  Engross yourself in your corner of peace for at least 10 minutes.\n\n
+   Gimme a 👍 when you're done"
+
+  utter_angry_user_no_share_affirm_idea_3:
+  - text: Alright then, how does it feel? Do you feel slightly calm now?
+  - text: Alright! How do you feel? Slightly calmer than before?
+
+  utter_angry_user_no_share_affirm_idea_calm:
+  - text: I'm glad to hear that. Now that you are in a slightly better state of mind, would you like to talk about what happened?
+
+  utter_angry_user_no_share_affirm_idea_no_calm_1:
+  - text: Okay, let's talk some other time then, shall we? Here's a suggestion though- don't neglect your feelings. You might feel temporarily okay, but its not the best course of action to take.
+
+  utter_angry_user_no_share_affirm_idea_no_calm_2:
+  - text: You might not feel like sharing at the moment, I completely understand. Yet bottling things inside could bite you back later.
+
+  utter_angry_user_no_share_affirm_idea_no_calm_3:
+  - text: Having said that, I'm always here for you. So if you ever need to talk, all you have to do is hit me up, I WILL respond, no matter the time 😇
+  - text: Having said that, you know the rules. Any moment when you feel like talking, get in touch right away. I'm always going to be here for you. Cool?
+
+  utter_angry_user_no_share_deny_idea_1:
+  - text: How about we go for a walk, then? Somewhere close, preferably quiet, and get a breath of fresh air?
+  - text: "When in doubt, a walk always helps.\n
+  - Eric 😅🤭 \n\n
+  How about we go for a short, peaceful walk among the greens? Sounds like a plan?"
+
+  utter_angry_user_no_share_deny_idea_2:
+  - text: "You see, research has shown that fresh air often helps one feel better owing to the better oxygen content.\n\n
+   Not just that, but the simple task of walking in its own rhythmic patterns has its own way of helping one settle into a calmer mood."
+
+  utter_angry_user_share_cause:
+  - text: "Ah, I see... But hey, I got your back!😇 Let's try and figure this out, shall we?\n\n
+  Tell me- on a scale of 1-5, how angry are you?"
+  - text: "Hmmm... So that happened... But don't worry, I got your back!😇 Let's try to figure this out, shall we?\n\n
+  Tell me- on a scale of 1-5, how furious are you?"
+  - text: "Ah, so that's what went down. But don't you worry. We will figure this out together \n\n
+  So tell me- On a scale of 1-5, how angry are you?"
+
+  utter_angry_user_level_1_start_1:
+  - text: Okay... I need you to think about some stuff. You told me what made you feel annoyed, right?
+  - text: Okay... Now I need you to ponder over some stuff. You told me what made you angry, haven't you?
+
+  utter_angry_user_level_1_start_2:
+  - text: "Often, whenever we're angry about something, we tend to think about it emotionally than logically.\n\nWe begin to form crude stories with our thoughts that are far from the truth..."
+    buttons:
+      - title: Huh? 🤔
+        payload: /user_confused
+
+  utter_angry_user_level_1_example_1:
+  - custom:
+      text: One day, me and Doug the Pug, had made plans to hang out. However, he bailed last minute. I was super annoyed.
+      animation: "https://media.giphy.com/media/3oKIPEeJ11BJaesR6U/giphy.gif"
+  - custom:
+      text: One day, me and Doug the Pug, had made plans to stream one of our favourite movies together. However, he bailed last minute. On hearing this, I was super annoyed.
+      animation: "https://bit.ly/3r8Vy3e"
+  - custom:
+      text: One day, me and Doug the Pug, had made plans to go on a virtual tour of the Alps. However, he bailed last minute. I was furious.
+      animation: "https://bit.ly/3r8Vy3e"
+
+  utter_angry_user_level_1_example_2:
+  - custom:
+      text: Now, there could be 2 reasons why he did that...One --  That he had been inconsiderate of my time and conveniently bailed, giving our meeting no importance...
+      animation: "https://bit.ly/2NMMYc0"
+  - custom:
+      text: Now, there could be 2 reasons why he did that...One --  That he had been inconsiderate of my time and conveniently bailed, giving our plan no importance in spite of all the discussions we'd had...
+      animation: "https://bit.ly/2NMMYc0"
+
+  utter_angry_user_level_1_example_3:
+  - custom:
+      text: Or, that he simply didn't bother to inform me even if he was busy and wasted my time.
+      animation: "https://bit.ly/3t5GYKt"
+
+  utter_angry_user_level_1_example_4:
+  - custom:
+      text: In the heat of the moment, I was so blinded by rage that I failed to see logical explanations to circumstances, and assumed the worst.
+      animation: "https://bit.ly/2ME4sHc"
+  - custom:
+      text: In the heat of the moment, I was so miffed by the fact that my awesome plan had crashed, that I assumed the worst and failed to see a logical explanation.
+      animation: "https://bit.ly/2ME4sHc"
+
+  utter_angry_user_level_1_example_5:
+  - custom:
+      text: I was quite mad about the whole business. I believed that he could've atleast told me. I'm quite positive I would've understood.
+      animation: "https://bit.ly/3bN4FjU"
+
+  utter_angry_user_level_1_continue_1:
+  - text: In our fits of annoyance, we tend to forget what exactly triggered our anger. We need to find out what that is. Tell me, what was it that triggered you?
+
+  utter_angry_user_level_1_continue_2:
+  - text: "Okay, now that you have it pinpointed, the next step is to decide what to do with this knowledge.\n\n
+   Do you want to confront said person? Do you want to sit back and reflect on it?"
+
+  utter_angry_user_level_1_continue_3:
+  - text: "Always remember, don't give in to the viciousness of the emotion.\n\n
+   Very often, it puts our brain and body in overdrive to the point where objective thinking is thrown out of the window. Don't you agree?"
+
+  utter_angry_user_level_1_continue_4:
+  - text: "Make sure you think carefully, and then take your next step...😅. \n\n
+  Remember- no spontaneous actions, no knee-jerk blabs,\n
+  Instead, an intent to discuss and peace will be up for grabs!"
+
+  utter_angry_user_level_2_begin_1:
+  - text: Okay, so how 'bout we get started with a lil cheer-up?
+  - text: Cool, so how about we get started with a lil cheer-up?
+
+  utter_angry_user_level_2_begin_2:
+  - text: Now, I need you to do something. Do you know what a 'happy place' is?
+  - text: Alright, now I need you to do something. Have you ever heard of a 'happy place'?
+
+  utter_angry_user_level_2_happy_place_explain_1:
+  - text: A happy place is a memory, situation, or activity that makes you feel happy.
+    buttons:
+      - title: Like? 🤨
+        payload: /user_confused
+
+  utter_angry_user_level_2_happy_place_explain_2:
+  - text: "For instance, I like to mentally hum the tune for 'My Favourite Things' from The Sound Of Music...🎶\n\n
+  Raindrops 🌧 on Roses 🌹, and whiskers on kittens 🐱... 🥰 Anyway you get me, right?"
+  - text: "For example, I like to imagine myself deep within a rainforest 🌳...\n\n
+  Listening to the rustling trees 🍃, the cooing birds 🐦... 🥰 Anyway you understand, right?"
+
+  utter_angry_user_level_2_begin_3:
+  - text: Tell me then, what's your happy place?
+
+  utter_angry_user_level_2_begin_4:
+  - text: Wow! Alright so take a moment, and close your eyes for 5 minutes. Breathe. Experience the feeling of being in your happy place. Give me a 👍 when you're done.
+  - text: That's awesome! Now, take a moment, and close your eyes for 5 minutes. Breathe. Experience the feeling of being in that happy place. Hit me with a 👍 when you're done.
+
+  utter_angry_user_level_3_initiate_1:
+  - text: Take a deep breath. Close your eyes. Monitor your breathing. Try to bring it to normal.
+
+  utter_angry_user_level_3_initiate_2:
+  - text: Alright. There. We've got this, okay? I'm here for you. Let's get through this together, shall we?
+  - text: Alright. There there, my friend. We'll get through this together. Let's go!
+
+  utter_angry_user_level_3_cont_1:
+  - text: "I now want you to try something. Take a piece of paper 📜 and write down your thoughts at the moment.\n\n
+  They don't have to be coherent or sensible. Just whatever made you angry. How you felt. Lemme know with a 👍 when done."
+
+  utter_angry_user_level_3_cont_2:
+  - text: "Now, take a deep breath and tear up that piece of paper! Trash it and throw it away in the garbage 🗑️.\n\n
+  This will help relieve all the pent up frustration in a non-harmful way.😇"
+  - text: "Now, take a deep breath and tear up that piece of paper! Trash it and throw it away in the garbage 🗑️.\n\n
+  This will give you enough time to come to terms with the thoughts running in your mind.😇"
+  - text: "Now, take a deep breath. Tear up that piece of paper! Trash it and throw it away in the garbage 🗑️.\n\n
+  This is instrumental in removing the angry, negative thoughts running in your mind."
+
+  utter_angry_user_level_3_cont_3:
+  - text: That worked, didn't it 😁? Now we can proceed to the next bit. Do you want to confront said person? Do you want to sit back and reflect on it?
+  - text: That worked, aye 😁? Now let's proceed to the next bit. Do you want to confront said person? Do you want to sit back and reflect on it?
+
+  utter_angry_user_level_4_audio:
+  - custom:
+      text: Let's try a small exercise. I'd suggest you put on your headphones for the best experience. Close your eyes,and listen to this...
+      audio: "https://bit.ly/3kP67Gv"
+  - custom:
+      text: Let's try a small exercise. I'd suggest you put on your headphones for the best experience. Close your eyes,and listen to this...
+      audio: "https://bit.ly/30jf29u"
+
+  utter_angry_user_level_4_beginning_1:
+  - text: Better 😁?  Now, what exactly about the fiasco angered you. You did tell me what went down. But what part of it was the thing that set you off?
+
+  utter_angry_user_level_4_beginning_2:
+  - text: "I understand... Often we end up classifying an entire incident as one thing, and don't really acknowledge what actually angered us.\n\n
+   Very often it is just one small thing or behaviour which angers us. Do you agree?"
+
+  utter_angry_user_level_4_cont_1:
+  - text: That worked, didn't it 😁? Tell me, now that you know what angered you, what do you feel like doing about it?
+  - text: That worked, aye 😁? Tell me, now that you know what angered you, what do you feel like doing about it?
+
+  utter_angry_user_level_4_cont_2:
+  - text: Before you go and do that thing, its better to calm down. You mentioned you like {Hobby1}, don't you? Try to do it.
+  - text: Before you go and do that thing, its better to calm down. You mentioned you like {Hobby2}, don't you? Try doing some.
+  - text: Before you go and do that thing, its better to calm down. You mentioned you like {Hobby3}, don't you? Try doing it.
+  - text: Hold your horses buddy... Its better to calm down before you proceed. You mentioned you like {Hobby1}, don't you? Try to do it.
+  - text: Hold your horses buddy... Its better to calm down before you proceed. You mentioned you like {Hobby2}, don't you? Try doing some.
+  - text: Hold your horses buddy... Its better to calm down before you proceed. You mentioned you like {Hobby3}, don't you? Try doing it.
+
+  utter_angry_user_level_4_cont_3:
+  - text: "Also, make sure you note down your reflections. Keep a record of what you felt post action.\n\n
+   Often, these prove to be some useful things for self analysis. Write them down, or pen them as a story.\n\n
+   I'm sure it will help you."
+
+  utter_angry_user_level_5_story_1:
+  - custom:
+      text: Let me give you an example. I had this friend - Catthew (we all called him 'cat' tho). He'd always act mean to me when we were around certain friends.
+      animation: "https://bit.ly/3l3e8Yu"
+
+  utter_angry_user_level_5_story_2:
+  - custom:
+      text: He'd crack jokes at my expense and humiliate me in front of everyone all the time. One day he dragged my biggest insecurity into a conversation.
+      animation: "https://bit.ly/3bvIdgc"
+
+  utter_angry_user_level_5_story_3:
+  - custom:
+      text: I was really angry at him for doing that. But then I did some thinking...
+      animation: "https://bit.ly/3vdjPrm"
+  - custom:
+      text: I was furious! How could he do that ?! But then I thought about it...
+      animation: "https://bit.ly/3vdjPrm"
+
+  utter_angry_user_level_5_story_4:
+  - custom:
+      text: I found that what HAD set me off, was that my close friend- who knew how strongly I felt about my insecurities, would make jokes about it. We had a huge fight.
+      animation: "https://bit.ly/3v5wYmt"
+  - custom:
+      text: I realised that what HAD set me off, was that my close friend- who knew how strongly I felt about my insecurities, would make jokes about it. We had a huge fight.
+      animation: "https://bit.ly/2N9YuOA"
+  - custom:
+      text: I realised that what HAD set me off, was that my close friend- who knew how strongly I felt about my insecurities, would make jokes about it. We had a huge fight.
+      animation: "https://bit.ly/3t5l0Ht"
+
+  utter_angry_user_level_5_story_5:
+  - custom:
+      text: "Before you go and do that thing, let me tell you what happened after our fight...\n\n
+      We realised that our friendship was much stronger that some petty fight.\n\n
+      Each of us apologised to the other, and now we're tighter than ever!"
+      animation: "https://bit.ly/3t77JhS"
+  - custom:
+      text: "Before you go and do it, let me tell you what happened later in the story...\n\n
+      After our fight, something magical occurred! We realised that our friendship was much stronger that some petty fight.\n\n
+      Each of us apologised to the other, and now we're tighter than ever!"
+      animation: "https://bit.ly/3bxyAxt"
+
+  utter_angry_user_level_5_ask:
+  - text: Would you like some more advice?
+  - text: Would you like me to continue?
+  - text: Do you want to discuss more?
+  - text: Do you want to know more stuff from me?
+
+  utter_angry_user_level_5_ask_continue:
+  - text: So, whenever you feel like you are reacting impulsively, close your eyes and imagine yourself in your happy place.
+  - text: So, essentially, when you get the feeling that you might just react impulsively, close your eyes, take a moment and imagine yourself in your happy place.
+
+  utter_unhappy_user_ask_talk:
+  - text: Do you want to talk about it?
+  - text: Do you want to share more?
+
+  utter_unhappy_user_deny_talk_1:
+  - text: Okay, let's talk some other time then, shall we? Just send me a 'hey' when you feel ready.
+  - text: That's okay... But when you DO feel like talking, just hit me up, okay? I'm right here.
+
+  utter_unhappy_user_deny_talk_2:
+  - text: And oh, please don't dwell on it too much? Experience the emotion for what it is. But make sure you don't get too lost in it.
+  - text: And oh, make sure you don't dwell on it a lot? Experience it for what it is but don't lose yourself in that process.
+
+  utter_unhappy_user_affirm_talk_1:
+  - text: I see... So what do you feel like doing in this instant?
+  - text: I see... So what do you feel like doing right now?
+
+  utter_unhappy_user_affirm_talk_2:
+  - text: "Absolutely understandable... Sadness is something that each of us experience.\n\n
+  So never be embarrassed to accept that something has made you feel down."
+
+  utter_unhappy_user_affirm_talk_3:
+  - text: "If you want to cry- Go ahead. Cry your heart out. More often than not, it helps you feel better.😇\n\n
+  If you want to scream, scream. You want to run, run. Remember to always embrace your emotions. What do you think?"
+
+  utter_unhappy_user_affirm_talk_4:
+  - text: "I need you to promise me that you won't keep your feelings buried in.\n\n
+   Take an oath that you won't hide or discard your emotions. Do I have your word?"
+    buttons:
+      - title: "🤞"
+        payload: /affirm
+
+  utter_unhappy_user_affirm_talk_5:
+  - text: "I've heard that the best cure for sadness is some wholesome quality time 😇. Seek out your family and friends, or whoever you vibe with and feel happy around.\n\n
+   That way, negative thoughts won't constantly be on your mind and you'll have newer, happier ones that leave you feeling better. Sounds good?"
+
+  utter_unhappy_user_affirm_talk_6:
+  - text: I've also heard that listening to good music helps. Let me fix something up for you.
+  - text: Guess what, I have heard somewhere that music solves most woes. And I think I have something that will help you with that.
+
+  utter_sick_pipeline_start_1:
+  - text: I hope you get better ASAP, buddy
+  - text: Get well soon, buddy
+  - text: I hope you make a speedy recovery, my friend
+
+  utter_sick_pipeline_start_2:
+  - text: So what do you want to do?
+    buttons:
+      - title: Talk 🤕
+        payload: /user_vent
+      - title: Feel better 🤒
+        payload: /user_sick_feel_better_request
+
+  utter_sick_pipeline_talk:
+  - text: Cool! Do you want to vent it out or just check in with me?
+    buttons:
+      - title: Share 🥺
+        payload: /user_vent
+      - title: Check In 😐
+        payload: /user_general_check_in
+
+  utter_sick_pipeline_talk_vent_1:
+  - text: There there, buddy. I know this is a rather frustrating time. So I want you to tell me what's up. Just vent it out.
+
+  utter_sick_pipeline_talk_vent_2:
+    - custom:
+        text: "Hmmm... So that's how it is.\n\nYou see, being sick often takes a toll on our thought process. It not only affects our body, but also our mind."
+        animation: "https://bit.ly/3cscrQf"
+
+  utter_sick_pipeline_talk_vent_3:
+  - text: "We're suddenly thrown into a very different space of mind than usual. So naturally, it gets hard to handle sometimes.\n\n
+  But hang in there my friend. Health first. Always. Wouldn't you agree?"
+
+  utter_sick_pipeline_talk_vent_4:
+  - custom:
+      text: And don't worry. Its all going to be good. All in good time. Okay?
+      animation: "https://bit.ly/2OIA9zI"
+  - custom:
+      text: And don't worry. Just take some rest, and I promise you will be up and about in no time!
+      animation: "https://bit.ly/2PYF7sP"
+  - custom:
+      text: And don't worry. Just take some rest, and I promise you will be twice as happy in no time!
+      animation: "https://bit.ly/3eFuMfo"
+  - custom:
+      text: And don't worry. Just take some rest, and I promise you'll be back to your cheery old self in no time!
+      animation: "https://bit.ly/2OKVFnp"
+
+  utter_sick_pipeline_feel_better_1:
+  - text: "Alright then... The first thing one must do when unwell is... well, NOTHING. 🤷\n\n
+  Being unwell is your body signalling you to take it easy. So first things first- REST"
+
+  utter_sick_pipeline_feel_better_2:
+  - custom:
+      text: It doesn’t matter what you do. For instance, I usually try to sleep with my pet cat Moe curled up beside me...
+      animation: "https://bit.ly/3cpdzV0"
+  - custom:
+      text: It doesn’t matter what you do. For instance, me and my pet cat Moe watch cartoons together!
+      animation: "https://bit.ly/3lajpgU"
+  - custom:
+      text: It doesn’t matter what you do. For instance, I read my favourite Dr. Seuss books whenever I'm sick!
+      animation: "https://bit.ly/30zAtDy"
+
+  utter_sick_pipeline_feel_better_3:
+  - custom:
+      text: Take it easy. Try to push the worries that plague your mind out for a while and rest, mayhaps even sleep.
+      animation: "https://bit.ly/3rLb6uk"
+
+  utter_sick_pipeline_feel_better_4:
+  - text: "Which brings me to my next point- SLEEP. I've read that sleep fights diseases by building immunity.\n\n
+   So get those missed Z's. Promise me that you'll take some rest?"
+
+  utter_sick_pipeline_feel_better_5:
+  - text: "As your buddy, it’s my self imposed duty to make sure you don’t feel the blues.. 🤭😁\n\n
+   Look at what I found-"
+
+  utter_sick_pipeline_feel_better_6:
+  - custom:
+      text: "Coming back to our ‘feelin better’ idea kit... \n\n
+      Make sure you eat home cooked, regular, balanced meals. Avoid greasy food or food that has a potential to cause digestion issues.\n\n
+      So no Burger King this week, cool? 🤭"
+      animation: "https://bit.ly/2OQPA8Q"
+
+  utter_sick_pipeline_feel_better_7:
+  - text: A Slovakian proverb says - Pure water is the world’s first and foremost medicine.🚰 Interesting, innit?
+  - text: I once read a quote from Stephen Curry - Drinking water is essential to a healthy lifestyle. Interesting that a sports star endorses water! 💧
+  - text: I once read somewhere that - Water is the best natural remedy.🚰 Interesting, innit?
+
+  utter_sick_pipeline_feel_better_8:
+  - text: No matter what- stay hydrated. Often when we are sick, we tend to forget to drink water regularly. So be sure to fill up that H2O reservoir of yours!
+  - text: No matter what- stay hydrated. Often when we are sick, we tend to forget to drink water regularly. So make sure you top up that water tank of yours!
+
+  utter_sick_pipeline_feel_better_9:
+  - text: Last but not the least- Try to keep your spirits up.
+  - text: Finally - Try to stay positive.
+
+  utter_sick_pipeline_feel_better_10:
+  - custom:
+      text: Often, in the midst of all this, we start feeling dejected. So try to stay positive. Talk to your friends and family (or me 🤭). It will help loads!
+      animation: "https://bit.ly/3bFWRkS"
+  - custom:
+      text: Often, in the midst of this sickness, we start feeling low. So try to keep your spirits up. Talk to your loved ones (or me 🤭). It will help loads!
+      animation: "https://bit.ly/3bFWRkS"
+
+  utter_sick_pipeline_conclude:
+  - custom:
+      text: Alright then, my friend. Remember to take care of yourself well. Cool?
+      animation: "https://bit.ly/3exd3Xv"
+  - custom:
+      text: "Okay then, make sure you take good care of yourself.\n\n
+      And if you feel like talking more, you know I’m always here! Just reach out. Cool?"
+      animation: "https://bit.ly/3vhb7bG"
+  - custom:
+      text: "Alright, take care, my friend.\n\n
+      And if you need some good 'ol ideas for feeling better, I’m always here! Hit me up. Okay?"
+      animation: "https://bit.ly/3ez2V0n"
+
+  utter_stuck_pipeline_begin_1:
+  - text: Don’t worry! I’m here to help you out with that. Tell me - What's the cause of this confusion?
+  - text: Alright, first things first. What's the cause of this confusion?
+
+  utter_stuck_pipeline_begin_2:
+  - text: Ah. I see. So that’s the issue...
+    buttons:
+      - title: Yup 😥
+        payload: /affirm
+  - text: Ah. I see. So that’s the issue...
+    buttons:
+      - title: Afraid so 😥
+        payload: /affirm
+
+  utter_stuck_pipeline_begin_3:
+  - text: Well, tell me then, how is this affecting you? Are you angry, irritated or just plain tired of this?
+
+  utter_stuck_pipeline_begin_4:
+  - text: Okay. Now that we've gotten talking, I have some stuff for you to think about. Let’s give it a whirl, shall we?
+  - text: I know you have a lot on your plate already, but I have something that might be helpful. Let’s give try it out, shall we?
+
+  utter_stuck_affirm_idea_1:
+  - text: "Alright, the first thing is acceptance. Accept the fact that you are feeling lost.\n\n
+   Sometimes we grapple with ourselves about it and find it hard to think about the point of confusion."
+  - text: "Alright, the first thing is acceptance. Accept the fact that you are feeling lost.\n\n
+   Sometimes we grapple with ourselves about it and end up spending time on denying it."
+
+  utter_stuck_affirm_idea_2:
+  - text: So, center yourself, clear your throat and shout out loud, “I don’t know what to do, and that is okay!”
+
+  utter_stuck_affirm_idea_3:
+  - text: "Knowing that you are lost because you're growing in life is powerful and empowering.\n\n
+   Own this confusion with a badge of honor. Take on the challenge and know that any path you take will lead to your next opportunity.\n\n
+   There are no wrong turns in life. Think about it. Give a 👍 when you're done."
+
+  utter_stuck_affirm_idea_4:
+  - text: Well, now that you have accepted this to be a very real situation, let’s move on to the next bit, aye?
+
+  utter_stuck_affirm_idea_5:
+  - text: Focus on what you know - When you're confused, it can be easy to get stuck in a cycle of repetitive thoughts that appear to have no beginning and no end.
+
+  utter_stuck_affirm_idea_6:
+  - text: To clear this, start focusing on what you don’t feel confused about. Contemplate on what you know and feel sure about. That way you will find yourself in a better mindspace.
+
+  utter_stuck_affirm_idea_7:
+  - text: Whew, those were some heavy things to think about, weren’t they? 🤯 How 'bout we lighten up the mood a bit?
+
+  utter_stuck_continue_without_games:
+  - text: Okay, then shall we proceed to solve our problem?
+  - text: Then shall we continue solving our problem?
+
+  utter_stuck_return_from_games_1:
+  - text: Shall we now get back to how to solve our problem?
+
+  utter_stuck_return_from_games_2:
+  - text: "Okay, now I want you to create a pro/con list. Close your eyes and create a mental list mentioning the boons and banes of each side.\n\n
+  If you happen to have a sheet of paper, write this mental list down on it.\n\n
+  You DO know what a pro-con list is, don't you?"
+    buttons:
+      - title: What's that? 😕
+        payload: /user_confused
+
+  utter_stuck_return_from_games_example_1:
+  - text: "A pro/con list is a table describing the advantages and disadvantages of something, which you consider carefully to make a sensible decision.\n\n
+  For example:"
+
+  utter_stuck_return_from_games_example_2:
+  - text: Doug the pug made this pro-con list for hiring a contractor to fix his broken roof.
+    image: "https://bit.ly/3vh0xkZ"
+  - text: Larry the canary made this pro-con list when he was taking up a new job.
+    image: "https://bit.ly/3eyWpqw"
+  - text: Duncan the pelican made this pro-con list when he was buying a new TV.
+    image: "https://bit.ly/38zBKPp"
+
+  utter_stuck_return_from_games_example_3:
+  - text: You get the concept now, right?
+  - text: You get it now, right?
+
+  utter_stuck_return_from_games_3:
+  - text: "So list it all. Don’t leave anything out. Even if you think it is inconsequential. That way it helps you analyse both sides better...\n\n
+   Done?"
+
+  utter_stuck_return_from_games_4:
+  - text: "Okay, now the next step sounds easy but can probably be the toughest bit. It's called - Action, and is the most crucial bit.\n\n
+   Sometimes we are so hung up on the decisions far into the future, that we often end up procrastinating the intermediate steps."
+
+  utter_stuck_return_from_games_5:
+  - text: For example, if you're confused about which college to apply to, talk to alumni first.
+  - text: For instance, if you're confused about where your relationship might end up, talk it out with your partner first.
+
+  utter_stuck_return_from_games_6:
+  - text: So take that intermediate step. More often than not, it will help you clear the clutter a little. Sounds good?
+
+  utter_stuck_return_from_games_7:
+  - text: "Cool. Finally, your environment often plays a large role in your decision making.\n\n
+   Often, being in clustered, busy, noisy areas makes your brain process all these background elements rather than focussing upon the task at hand."
+
+  utter_stuck_return_from_games_8:
+  - text: "So go for a walk in nature, or find a quiet place in your house. Go to your secret spot at the top of your building.\n\n
+   Find your comfortable place, meditate there and ponder over things. It’ll make them easier to manage.\n\n
+   I need your word tho- would you give it a try? It really would help you a lot..."
+
+  utter_stuck_extra_points_1:
+  - text: Aside of whatever we discussed so far I have a few points that I want you to keep in mind, wanna see?
+
+  utter_stuck_extra_points_2:
+  - text: "Firstly, start meditating regularly.\n\n
+   Many researches have shown that meditation is known to give better clarity to your thoughts."
+
+  utter_stuck_extra_points_3:
+  - text: "Secondly, ground yourself in the present moment.\n\n
+   As I told you earlier, people often think way too much into the future. Don’t do that. Focus on the 'Now'."
+
+  utter_stuck_extra_points_4:
+  - text: "Third and most important - Realise that no decision is a bad decision.\n\n
+  When life pushes you to decide, it is pushing you towards valuable life lessons.\n\n
+  Every experience your decision makes you live, is an experience in growth. You will look back and thank the decision later. So never be afraid to decide."
+
+  utter_session_conclusion:
+  - text: Well, I hope this session helped you feel a tad bit better. 🙈
+  - text: I hope you are feeling slightly better and found my advice useful. 🙈
+  - text: I hope there was something today that made you feel better.
+
+  utter_pdf_msg:
+  - text: Here's a handy guide for you to refer.
+  - text: In case you forget, here's a handy guide for you to refer.
+  - text: I've got you covered! Take this handy reference guide
+  - text: So, see you, my friend! Here's all that we discussed today.
+  - text: Here's a guide for reference.
+  - text: I had a feeling that you might forget all we discussed. Here’s a handy guide.
+  - text: I come prepared, buddy 😎. Here’s a handy guide.
+
+  utter_good_night:
+  - text: Sweet dreams {Person_First_Name}, and talk to you soon! 💤
+  - text: Sleep tight {Person_First_Name}, and talk to you soon!😴
+  - text: Have a good night, {Person_First_Name}! Talk to you soon! 💤
+  - text: Sleep snug as a bug in a rug. Talk to you soon, {Person_First_Name}! 😴
+  - text: Let those zzzz's come! Talk to you soon, {Person_First_Name}! 😴
+  - text: Goodnight! Talk to you soon, {Person_First_Name}.💤 😊
+  - text: Goodnight! Oyasuminasai! Sleep well, {Person_First_Name}.
+  - text: Goodnight {Person_First_Name}, and sleep well💤. We shall talk soon, aye ?
+
+  utter_ask_Hobby1:
+  - text: Let's get to know you a little better, {Person_First_Name}... Tell me one of your hobbies
+  - text: Awesome! I'd like to know more about you, {Person_First_Name}... Type in one of your hobbies
+  - text: So {Person_First_Name}, let's get to know you better. First off, what do like to do in your free time? Tell me one of your hobbies.
+
+  utter_ask_Hobby2:
+  - text: That's so cool! Tell me one more!
+  - text: Amazing! One more hobby!
+  - text: Interesting... What else do you like to do?
+  utter_ask_Hobby3:
+  - text: Last one, I promise! Type in another one of your interests!
+  - text: Third time's the charm! Gimme another one!
+  utter_iamabot:
+  - text: I'm Eric, your friendly personal chat buddy! I'm here to help you supercharge your awful mood!
+  - text: Humans call me Eric, here to cheer you up! I was developed by humans such as yourself and designed to make your day ever-so brighter!
+  - text: Beep-Boop... I'm Eric! Your bot-buddy, ever ready to chat your problems away!
+  - text: The name's Eric! I eliminate the pineapple of sadness from the pizza of life!
+  - text: You can call me Eric! Think of me as your chat buddy with whom you can speak your mind away!
+
+  utter_smile:
+  - text: 😊
+  - text: 😀
+  - text: 😃
+  - text: 😄
+  - text: 😁
+  - text: 😉
+  - text: 😇
+  - text: :)
+  - text: (❁´◡`❁)
+  - text: :-D
+  - text: :-)
+  - text: :-D
+  - text: :D
+
+  utter_probe:
+  - text: Hey {Person_First_Name}, You can open up to me!
+  - text: C'mon {Person_First_Name}! Help me help you... We can both overcome this
+  - text: This is a safe space, buddy... I'm here to help!
+  - text: Don't be afraid,{Person_First_Name}... I'm always here to lend an ear. Help me help you.
+  - text: This is a safe space, {Person_First_Name}... Talking is what I do best. Help me help you.
+  - text: Hey, it's okay. You can tell me. I 'm always here to help.
+  - text: Don't worry it's okay, its a safe space. I'm only here to help. Take your time.
+
+  utter_sorry:
+  - text: I'm sorry to hear that...
+  - text: I'm so sorry to hear that...
+  - text: Damn... I'm sorry to hear that
+
+actions:
+- action_play_tictactoe
+- action_play_Hangman
+- action_freestyle_mode
+- action_pre_madlibs
+- action_set_sentiment
+- action_play_music
+- action_check_name
+- action_session_start
+- action_custom_fallback
+- action_set_slot
+- action_get_gif
+- action_cure_boredom
+- action_get_pdf
+- action_get_stories
+- action_launch_lifestyle_form
+
+forms:
+- submit_hobby_form
+- mad_lib_input
+- tictactoe_input
+- hangman_input
+- user_thought_input
+- lifestyle_input
+- user_anger_intensity_input
+- user_heartbreak_intensity_input
+- freestyle_input

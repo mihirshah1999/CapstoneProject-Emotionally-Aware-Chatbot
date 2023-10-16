@@ -1,0 +1,41 @@
+## intent:user_angry
+- I am [angry](Mood)
+- I am feeling so [angry](Mood)
+- I am so [annoyed](Mood)
+- It's annoying
+- That's aggravating
+- I'm [furious](Mood)
+- That is infuriating 
+- I'm very [mad](Mood)
+- Everything vexes me
+- I am [outraged](Mood)
+- That is outrageous!
+- I feel [hostile](Mood)
+- I am very [frustrated](Mood)
+- It is [irritating](Mood) me
+- I feel so [offended](Mood)
+- I am full of fury
+- I feel very [belligerent](Mood)
+- I [hate](Mood) doing this
+- I have no patience today
+- I could not control my anger
+- I’m [annoyed](Mood)
+- I’m super [annoyed](Mood)
+- I’m so [mad](Mood). 
+- I'm [enraged](Mood)
+- I’m straight up [angry](Mood).
+- This is maddening!
+- I'm [pissed](Mood) off
+- I'm [pissed](Mood)
+- You bet I'm [angry](Mood)
+- That made me [angry](Mood)
+- U made me [angry](Mood)
+- I'm still [angry](Mood) about that
+- I am absolutely [frustrated](Mood) and so mad at that scumbag
+- I am seething with rage
+- Infuriating. Absolutely [infuriating](Mood).
+- I was [furious](Mood)!
+- That idiotic person really [made me see red](Mood) with all his stupidity.
+- So annoyed. Sometimes the dumbest of things get me so [riled up](Mood)
+- I'm [cross](Mood)
+- I'm [vexed](Mood)
